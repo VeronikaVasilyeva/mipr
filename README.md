@@ -68,7 +68,7 @@ For now, MIPr already has this class which placed in *includes_OpenCV\src\main\j
     ```java
     public class Img2Gray_opencv extends Configured implements Tool{
         public static void main(String[] args) throws Exception {
-            int res  = ToolRunner.run(new Img2Gray(), args);
+            int res  = ToolRunner.run(new Img2Gray_opencv(), args);
             System.exit(res);
         }
     ```
