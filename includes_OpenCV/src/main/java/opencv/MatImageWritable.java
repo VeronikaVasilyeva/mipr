@@ -6,6 +6,7 @@ import org.opencv.core.Mat;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * Created by Epanchee on 24.02.15.
@@ -61,5 +62,40 @@ public class MatImageWritable extends ImageWritable<Mat> {
         this.im = new Mat(mHeight, mWidth, type);
         // Read image from byte array
         this.im.put(0, 0, bArray);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof MatImageWritable)) {
+            return false;
+        } else {
+            MatImageWritable other = (MatImageWritable)obj;
+            return areSame(this, other);
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        //TODO
+        return 0;
+    }
+
+    public static boolean areSame(MatImageWritable writable1, MatImageWritable writable2) {
+        return  writable1.fileName.equals(writable2.fileName) &&
+                writable1.format.equals(writable2.format) &&
+                AreSamePerPixel(writable1.im,writable2.im);
+    }
+
+    public static boolean AreSamePerPixel(Mat img1,Mat img2) {
+        byte[] array1 = MatToBytesArray(img1);
+        byte[] array2 = MatToBytesArray(img2);
+        boolean areSameAsBytes = Arrays.equals(array1, array2);
+        return areSameAsBytes;
+    }
+
+    public static byte[] MatToBytesArray(Mat image){
+        byte[] result = new byte[(int) (image.total() * image.channels())];
+        image.get(0, 0, result);
+        return result;
     }
 }
