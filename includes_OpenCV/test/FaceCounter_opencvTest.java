@@ -33,12 +33,12 @@ public class FaceCounter_opencvTest{
 
     @Test
     public void testMapper() {
-        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("D:\\Java\\MIPR\\images\\color2.jpg")));
-        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("D:\\Java\\MIPR\\images\\face2.jpg")));
-        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("D:\\Java\\MIPR\\images\\3.jpg")));
-        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("D:\\Java\\MIPR\\images\\12.jpg")));
-        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("D:\\Java\\MIPR\\images\\5.jpg")));
-        mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("D:\\Java\\MIPR\\images\\10.jpg")));
+        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("..\\images\\color2.jpg")));
+        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("..\\images\\face2.jpg")));
+        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("..\\images\\3.jpg")));
+        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("..\\images\\12.jpg")));
+        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("..\\images\\5.jpg")));
+        mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("..\\images\\10.jpg")));
         //mapDriver.withOutput(new IntWritable(0),  new IntWritable(1));
         //mapDriver.withOutput(new IntWritable(1),  new IntWritable(1));
         //mapDriver.withOutput(new IntWritable(3),  new IntWritable(1));
@@ -50,10 +50,10 @@ public class FaceCounter_opencvTest{
 
     @Test
     public void testMapperReducer(){
-        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("D:\\Java\\MIPR\\images\\color2.jpg")));
-        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("D:\\Java\\MIPR\\images\\face2.jpg")));
-        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("D:\\Java\\MIPR\\images\\face2.jpg")));
-        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("D:\\Java\\MIPR\\images\\10.jpg")));
+        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("..\\images\\color2.jpg")));
+        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("..\\images\\face2.jpg")));
+        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("..\\images\\face2.jpg")));
+        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("..\\images\\10.jpg")));
         mapReduceDriver.withOutput(new IntWritable(0),  new IntWritable(1));
         mapReduceDriver.withOutput(new IntWritable(1),  new IntWritable(2));
         mapReduceDriver.withOutput(new IntWritable(10),  new IntWritable(1));
