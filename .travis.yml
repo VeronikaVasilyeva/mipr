@@ -6,8 +6,7 @@ jdk:
   -oraclejdk8
   -oraclejdk7
   
-script:
-mvn test
+#script: mvn test
 
-mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+#mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
