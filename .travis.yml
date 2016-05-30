@@ -1,8 +1,8 @@
 language: java
-script: mvn clean compile
+script: mvn clean compile test
 
-#install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
+#deploy not working
 deploy:
   provider: releases
   api_key: "246c15317d7cebe5556a5bbe1fa1bf54a1f634e2"
