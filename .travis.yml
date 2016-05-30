@@ -3,3 +3,10 @@ script: mvn clean compile
 
 #install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
+deploy:
+  provider: releases
+  api_key: "246c15317d7cebe5556a5bbe1fa1bf54a1f634e2"
+  file: "mipr-core-0.1-jar-with-dependencies.jar"
+  skip_cleanup: true
+  on:
+    tags: true
