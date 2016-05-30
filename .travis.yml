@@ -1,10 +1,5 @@
 language: java
-sudo: false
-
-jdk:
-  - oraclejdk7
-
-script: mvn verify
+script: mvn clean compile
 
 #install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
