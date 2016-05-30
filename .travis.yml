@@ -5,7 +5,7 @@ script: mvn clean compile test
 #deploy not working
 deploy:
   provider: releases
-  api_key: "246c15317d7cebe5556a5bbe1fa1bf54a1f634e2"
+  api_key: "BjsmCC9pnH8BsWTsDorM"
   file: "mipr-core-0.1-jar-with-dependencies.jar"
   skip_cleanup: true
   on:
