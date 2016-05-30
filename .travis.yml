@@ -1,0 +1,13 @@
+language: java
+
+sudo: false
+
+jdk:
+  -oraclejdk8
+  -oraclejdk7
+  
+script:
+mvn test
+
+mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
