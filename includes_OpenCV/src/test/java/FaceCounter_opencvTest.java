@@ -28,6 +28,7 @@ public class FaceCounter_opencvTest{
         //load opencv and let mapper know this
         System.out.println(System.getProperty("java.library.path"));
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        System.out.println(System.getProperty("java.library.path"));
         FaceCounter_opencv.FaceCounterMapper.set_openCvLoaded();
     }
 
