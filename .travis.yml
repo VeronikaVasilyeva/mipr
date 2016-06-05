@@ -7,7 +7,10 @@ deploy:
   provider: releases 
   api_key: 
     secure: up2kK3lWcy1hpqQxnaoIApJZUvTdkJWcoUZtb4Ba0IGFOPR+qtXxQ4hOZWDQa4xe2ZNXYuBP+UfiBDjMvl4SwjHRQ8OSD5WGTGNq5fJyg9a8Svsjgz1sEaioFxYH6JxI17jnSp+k0fFLV6N8UEquRTq/+IcS1I7G0ycr4mlnnZqGuIEsZwrdM0aI8IPJ7yva6BGEYIXEtxoD00PMUjp5jmGjfsnkO41d5tjJ508Bb/FqDTFgSaflp3vTX5wDuc56tcHKFCtDvKWTdiREpnm5Mh8T81ORTY1lFEkM1tZwzKrf+TPQkQkI302YiMpNYmZxlYenD7d6CBPyB4P64Njgbkdy4uBlzlJ+SprYJST+HPMR9C7oaDVY2nEY3LgP+EPWq427wo69zW6vM2mz3EKe9gCC3zdpWxrQ6KVs22XsoTNmyTD/X3LbB3kMaDo/Ff/MboUtFisqnkbYxApqVHOqCdP8QhJ2lTcDqgYoBLvEf4rUnRtZWcCRQrcMfVCOwTF+BRl0/TIig5W652w4qXRrMY/NHZunyQEiusBI7fH0NJMmzBSSbGPAztmKdM8e6t+kw2djja4z2njF83ExafpM8EhBYHSaHVZS/pgYlu0v7uMoXF+foe6SJ5of+dIMHkfwpVq6fw+XRO/Le7Bk+afQPB3NSTbevJ5evy4KuXWGrEM= 
-  file: mipr-core-0.1-jar-with-dependencies.jar 
+  file: 
+    # - "core_package/target/mipr-core-0.1-jar-with-dependencies.jar"
+    - "includes_OpenCV/target/opencv-jar-with-dependencies.jar"
+    - "includes_OpenIMAJ/target/openimaj-jar-with-dependencies.jar" 
   skip_cleanup: true
   on: 
     repo: VeronikaVasilyeva/mipr
