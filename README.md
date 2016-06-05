@@ -1,5 +1,7 @@
 # MIPr - MapReduce Image Processing framework for Hadoop
 
+[![Build Status](https://travis-ci.org/VeronikaVasilyeva/mipr.svg?branch=master)](https://travis-ci.org/VeronikaVasilyeva/mipr)
+
 MIPr provides the ability to process images in Hadoop.
 
 MIPr includes:
