@@ -1,6 +1,18 @@
 language: java
+
 script: mvn clean install -Dmaven.test.skip=true
 
+compiler:
+  -gcc
+  
+before_install:
+  - sudo apt-get update
+  
+install:
+  - sudo apt-get install python-dev python-numpy
+  
+before_script:
+  
 
 #deploy not working
 deploy:
