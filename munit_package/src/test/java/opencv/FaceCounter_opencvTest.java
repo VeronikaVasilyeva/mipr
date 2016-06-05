@@ -1,5 +1,6 @@
+package opencv;
+
 import experiments.FaceCounter_opencv;
-import opencv.MatImageWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.mrunit.mapreduce.MapDriver;
@@ -11,11 +12,10 @@ import org.junit.runners.JUnit4;
 import org.opencv.core.Core;
 import org.opencv.highgui.Highgui;
 
-import java.io.File;
 import java.io.IOException;
 
 @RunWith(JUnit4.class)
-public class FaceCounter_opencvTest{
+public class FaceCounter_opencvTest {
     MapDriver<NullWritable, MatImageWritable, IntWritable, IntWritable> mapDriver;
     MapReduceDriver<NullWritable, MatImageWritable, IntWritable, IntWritable, IntWritable, IntWritable> mapReduceDriver;
 

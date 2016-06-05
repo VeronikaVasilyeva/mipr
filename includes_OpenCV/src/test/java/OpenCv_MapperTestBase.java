@@ -4,6 +4,8 @@ import org.apache.hadoop.mrunit.ReduceDriver;
 import org.apache.hadoop.mrunit.mapreduce.MapDriver;
 import org.junit.Test;
 
+import java.io.IOException;
+
 public abstract class OpenCv_MapperTestBase<KEYIN, VALUEIN, KEYOUT, VALUEOUT> extends OpenCv_TestBase{
     MapDriver<KEYIN, VALUEIN, KEYOUT, VALUEOUT> mapDriver;
 
@@ -16,6 +18,6 @@ public abstract class OpenCv_MapperTestBase<KEYIN, VALUEIN, KEYOUT, VALUEOUT> ex
     protected abstract OpenCVMapper<KEYIN, VALUEIN, KEYOUT, VALUEOUT> createMapper();
 
     @Test
-    public abstract void testMapper();
+    public abstract void testMapper() throws IOException;
 }
 

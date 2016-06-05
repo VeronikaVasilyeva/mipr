@@ -17,8 +17,8 @@ public class Img2Gray_opencvTest extends OpenCv_MapperTestBase<NullWritable, Mat
     }
 
     @Override
-    public void testMapper() {
-        Mat testImage = LoadMat("..\\images\\color2.jpg");
+    public void testMapper() throws IOException {
+        Mat testImage = LoadMat(".\\src\\test\\java\\images\\color2.jpg");
         mapDriver.withInput(NullWritable.get(), new MatImageWritable(testImage));
 
         Mat expectedOutput = testImage.clone();

@@ -12,6 +12,7 @@
         <module>includes_OpenCV</module>
         <module>includes_OpenIMAJ</module>
         <module>core_package</module>
+        <module>munit_package</module>
     </modules>
     
 <dependencies>
