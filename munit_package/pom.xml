@@ -130,6 +130,16 @@
             <artifactId>mipr-opencv</artifactId>
             <version>0.1</version>
         </dependency>
+        <dependency>
+            <groupId>mipr</groupId>
+            <artifactId>mipr-openimaj</artifactId>
+            <version>0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>mipr</groupId>
+            <artifactId>mipr-openimaj</artifactId>
+            <version>0.1</version>
+        </dependency>
     </dependencies>
 
 

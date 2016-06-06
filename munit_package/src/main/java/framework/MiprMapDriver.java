@@ -41,10 +41,11 @@ public abstract class MiprMapDriver<IMAGE, WRITABLE extends ImageWritable<IMAGE>
     protected abstract WRITABLE getWritable(String fileName) throws Exception;
 
     public final void test(MiprAssert<KEYOUT, VALUEOUT> miprAssert) throws IOException {
-        setUp();
-        final List<Pair<KEYOUT, VALUEOUT>> runResults = mapDriver.run();
+        setUp(); // предоставляет возможность преднастройки
 
-        miprAssert.assertResults(runResults);  //проверка на всю коллекцию
+        final List<Pair<KEYOUT, VALUEOUT>> runResults = mapDriver.run(); //получаем выходные занные после запуска
+
+        miprAssert.assertResults(runResults);  //проверка на всю коллекцию - опциональна
 
         for (Pair<KEYOUT, VALUEOUT> pair: runResults) {
             miprAssert.assertResult(pair);
