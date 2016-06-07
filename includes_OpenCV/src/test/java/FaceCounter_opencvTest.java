@@ -39,7 +39,8 @@ public class FaceCounter_opencvTest{
         //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\3.jpg")));
         //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\12.jpg")));
         //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\5.jpg")));
-        mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\10.jpg")));
+        String path = getClass().getResource("10.jpg").getPath();
+        mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(path)));
         //mapDriver.withOutput(new IntWritable(0),  new IntWritable(1));
         //mapDriver.withOutput(new IntWritable(1),  new IntWritable(1));
         //mapDriver.withOutput(new IntWritable(3),  new IntWritable(1));
@@ -51,10 +52,10 @@ public class FaceCounter_opencvTest{
 
     @Test
     public void testMapperReducer() throws IOException {
-        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\color2.jpg")));
-        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\face2.jpg")));
-        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\face2.jpg")));
-        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\10.jpg")));
+        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("color2.jpg")));
+        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("face2.jpg")));
+        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("face2.jpg")));
+        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("10.jpg")));
         mapReduceDriver.withOutput(new IntWritable(0),  new IntWritable(1));
         mapReduceDriver.withOutput(new IntWritable(1),  new IntWritable(2));
         mapReduceDriver.withOutput(new IntWritable(10),  new IntWritable(1));

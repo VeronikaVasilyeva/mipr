@@ -42,4 +42,8 @@ before_script:
   - make -j8
   - sudo make -j8 install
   - mvn install:install-file -Dfile=/usr/local/share/OpenCV/java/opencv-249.jar -DgroupId=opencv -DartifactId=opencv -Dversion=2.4.9 -Dpackaging=jar
-  - cd ../.. 
+  - cd ../..
+
+cache:
+  directories:
+    - opencv-2.4.9

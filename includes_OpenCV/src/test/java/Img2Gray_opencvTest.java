@@ -7,6 +7,7 @@ import org.junit.BeforeClass;
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Img2Gray_opencvTest extends OpenCv_MapperTestBase<NullWritable, MatImageWritable,NullWritable,MatImageWritable>{
@@ -18,7 +19,8 @@ public class Img2Gray_opencvTest extends OpenCv_MapperTestBase<NullWritable, Mat
 
     @Override
     public void testMapper() throws IOException {
-        Mat testImage = LoadMat(".\\src\\test\\java\\images\\color2.jpg");
+        String path = getClass().getResource("color2.jpg").getPath();
+        Mat testImage = LoadMat(path);
         mapDriver.withInput(NullWritable.get(), new MatImageWritable(testImage));
 
         Mat expectedOutput = testImage.clone();
