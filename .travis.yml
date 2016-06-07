@@ -33,7 +33,7 @@ install:
   - sudo apt-get install python-dev python-numpy
   
 before_script:
-  - if [ ! -d $HOME/opencv-2.4.9 ] then sh build.sh fi
+  - if [ ! -d opencv-2.4.9 ]; then sh build.sh; fi;
 
 cache:
   directories:
