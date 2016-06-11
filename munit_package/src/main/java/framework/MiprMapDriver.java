@@ -1,6 +1,7 @@
 package framework;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
 import core.writables.ImageWritable;
@@ -18,14 +19,18 @@ public abstract class MiprMapDriver<IMAGE, WRITABLE extends ImageWritable<IMAGE>
 
     MapDriver<NullWritable, WRITABLE, KEYOUT, VALUEOUT> mapDriver;
     Mapper<NullWritable, WRITABLE, KEYOUT, VALUEOUT> mapper;
+    List<WRITABLE> originalWritables;
 
     public MiprMapDriver(Mapper<NullWritable, WRITABLE, KEYOUT, VALUEOUT> map) {
         mapper = map;
         mapDriver = MapDriver.newMapDriver(map);
+        originalWritables = new ArrayList<WRITABLE>();
     }
 
     public void withInputFile(String fileName) throws Exception {
-        mapDriver.withInput(NullWritable.get(), getWritable(fileName));
+        WRITABLE writable = getWritable(fileName);
+        originalWritables.add(writable);
+        mapDriver.withInput(NullWritable.get(), writable);
     }
 
     public void withInputFolder(String folderName) throws Exception {
@@ -40,17 +45,19 @@ public abstract class MiprMapDriver<IMAGE, WRITABLE extends ImageWritable<IMAGE>
     //вернет объект типа Writable - возвращает конкретную реализацию из наследника - фабричный метод
     protected abstract WRITABLE getWritable(String fileName) throws Exception;
 
-    public final void test(MiprAssert<KEYOUT, VALUEOUT> miprAssert) throws IOException {
-        setUp(); // предоставляет возможность преднастройки
+    public final void test(MiprAssert<KEYOUT, VALUEOUT, WRITABLE> miprAssert) throws IOException {
+        //предоставляет возможность преднастройки
+        setup();
+        //получаем выходные занные после запуска
+        final List<Pair<KEYOUT, VALUEOUT>> runResults = mapDriver.run();
 
-        final List<Pair<KEYOUT, VALUEOUT>> runResults = mapDriver.run(); //получаем выходные занные после запуска
-
-        miprAssert.assertResults(runResults);  //проверка на всю коллекцию - опциональна
+        //проверка на всю коллекцию - опциональна
+        miprAssert.assertResults(runResults, originalWritables);
 
         for (Pair<KEYOUT, VALUEOUT> pair: runResults) {
             miprAssert.assertResult(pair);
         }
     }
 
-    protected void setUp() {};
+    protected void setup() {};
 }

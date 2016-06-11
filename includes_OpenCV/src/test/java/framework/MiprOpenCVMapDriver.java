@@ -1,3 +1,5 @@
+package framework;
+
 import framework.MiprMapDriver;
 import opencv.MatImageWritable;
 import opencv.OpenCVMapper;
@@ -16,7 +18,7 @@ public abstract class MiprOpenCVMapDriver<KEYOUT, VALUEOUT> extends MiprMapDrive
     }
 
     @Override
-    protected void setUp() {
+    protected void setup() {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         OpenCVMapper.set_openCvLoaded();
     }

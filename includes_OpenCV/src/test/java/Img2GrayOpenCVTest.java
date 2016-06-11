@@ -1,31 +1,23 @@
 import experiments.Img2Gray_opencv;
-import framework.MiprAssert;
+import framework.MiprOpenCVAssert;
+import framework.MiprOpenCVMapDriver;
+import framework.MiprOpenCVSingleResultAssert;
 import opencv.MatImageWritable;
-import opencv.OpenCVMapper;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.mapreduce.Mapper;
-import org.apache.hadoop.mrunit.types.Pair;
 import org.junit.Test;
-import org.opencv.core.Core;
 import org.opencv.core.CvType;
 
-import java.util.List;
-
-/**
- * Created by VeronikaV on 05.06.2016.
- */
 public class Img2GrayOpenCVTest {
 
-    private MiprAssert<NullWritable, MatImageWritable> _asserts = new MiprAssert<NullWritable, MatImageWritable>() {
-        @Override
-        protected void assertResults(List<Pair<NullWritable, MatImageWritable>> runResults) {
-            assertEquals(1, runResults.toArray().length);
-        }
+    private MiprOpenCVSingleResultAssert _asserts = new MiprOpenCVSingleResultAssert() {
 
         @Override
-        protected void assertResult(Pair<NullWritable, MatImageWritable> runResult) {
-            //проверяем, что у изображения один канал (чб)
-            assertEquals(runResult.getSecond().getImage().type(), CvType.CV_8UC1);
+        protected void assertResult(MatImageWritable source, MatImageWritable result) {
+            MiprOpenCVAssert.assertSameSize(source,result);
+            MiprOpenCVAssert.assertSameNameAndFormat(source,result);
+            MiprOpenCVAssert.assertType(CvType.CV_8UC1,result);
+            MiprOpenCVAssert.assertChannelsCount(1,result);
         }
     };
 
@@ -51,3 +43,4 @@ public class Img2GrayOpenCVTest {
         driver.test(_asserts);
     }
 }
+
