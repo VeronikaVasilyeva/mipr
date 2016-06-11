@@ -10,7 +10,7 @@ import org.opencv.core.CvType;
 
 public class Img2GrayOpenCVTest {
 
-    private MiprOpenCVSingleResultAssert _asserts = new MiprOpenCVSingleResultAssert() {
+    private MiprOpenCVSingleResultAssert _asserts = new MiprOpenCVSingleResultAssert<NullWritable,MatImageWritable>() {
 
         @Override
         protected void assertResult(MatImageWritable source, MatImageWritable result) {

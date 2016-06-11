@@ -4,11 +4,11 @@ import org.apache.hadoop.mrunit.types.Pair;
 
 import java.util.List;
 
-public abstract class MiprSingleResultAssert<KEY, VALUE, WRITABLE> extends MiprAssert<KEY, VALUE, WRITABLE>{
-    private WRITABLE source;
+public abstract class MiprSingleResultAssert<KEY, VALUE, SOURCE_WRITABLE> extends MiprAssert<KEY, VALUE, SOURCE_WRITABLE>{
+    private SOURCE_WRITABLE source;
 
     @Override
-    protected final void assertResults(List<Pair<KEY, VALUE>> runResults, List<WRITABLE> originalWritables){
+    protected final void assertResults(List<Pair<KEY, VALUE>> runResults, List<SOURCE_WRITABLE> originalWritables){
         assertEquals(1, runResults.toArray().length);
         source = originalWritables.get(0);
     }
@@ -18,5 +18,5 @@ public abstract class MiprSingleResultAssert<KEY, VALUE, WRITABLE> extends MiprA
         assertResult(source, runResult.getSecond());
     }
 
-    protected abstract void assertResult(WRITABLE source, VALUE result);
+    protected abstract void assertResult(SOURCE_WRITABLE source, VALUE result);
 }
