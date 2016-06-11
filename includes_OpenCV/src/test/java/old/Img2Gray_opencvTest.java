@@ -19,7 +19,7 @@ public class Img2Gray_opencvTest extends OpenCv_MapperTestBase<NullWritable, Mat
     @Override
     public void testMapper() throws IOException {
 
-        MatImageWritable image = MatImageWritable.FromResource("/color2.jpg");
+        MatImageWritable image = MatImageWritable.FromResource("/color.jpg");
         mapDriver.withInput(NullWritable.get(), image);
 
         Mat expectedOutput = image.getImage().clone();

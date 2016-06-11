@@ -35,7 +35,7 @@ public class FaceCounter_opencvTest{
 
     //@Test
     public void testMapper() throws IOException {
-        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\color2.jpg")));
+        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\color.jpg")));
         //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\face2.jpg")));
         //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\3.jpg")));
         //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\12.jpg")));
@@ -53,7 +53,7 @@ public class FaceCounter_opencvTest{
 
     //@Test
     public void testMapperReducer() throws IOException {
-        mapReduceDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/color2.jpg"));
+        mapReduceDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/color.jpg"));
         mapReduceDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/face2.jpg"));
         mapReduceDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/face2.jpg"));
         mapReduceDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/10.jpg"));
