@@ -11,16 +11,14 @@ import org.opencv.core.Mat;
  */
 
 public abstract class MiprOpenCVMapDriver<KEYOUT, VALUEOUT> extends MiprMapDriver<Mat, MatImageWritable, KEYOUT, VALUEOUT> {
-
-    static boolean isOpenCVLoaded = false;
-
     public MiprOpenCVMapDriver(Mapper<NullWritable, MatImageWritable, KEYOUT, VALUEOUT> map) {
         super(map);
-        if (!isOpenCVLoaded) {
-            System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-            isOpenCVLoaded = true;
-            OpenCVMapper.set_openCvLoaded();
-        }
+    }
+
+    @Override
+    protected void setUp() {
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        OpenCVMapper.set_openCvLoaded();
     }
 
     protected MatImageWritable getWritable(String fileName) throws Exception {
