@@ -44,13 +44,7 @@ public class FaceDetectionOpenCV {
             Mat image = value.getImage();
 
             if (image != null) {
-                CascadeClassifier faceDetector = new CascadeClassifier("lbpcascade_frontalface.xml");
-                MatOfRect faceDetections = new MatOfRect();
-                faceDetector.detectMultiScale(image, faceDetections);
-
-                for (Rect rect : faceDetections.toArray()) {
-                    Core.rectangle(image, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(0, 0, 255), 3);
-                }
+                detectFaces(image);
 
                 MatImageWritable matiw = new MatImageWritable(image);
 
@@ -58,6 +52,18 @@ public class FaceDetectionOpenCV {
                 matiw.setFileName(value.getFileName() + "_result");
                 context.write(NullWritable.get(), matiw);
             }
+        }
+
+        public Mat detectFaces(Mat image) {
+            image = image.clone();
+            CascadeClassifier faceDetector = new CascadeClassifier("lbpcascade_frontalface.xml");
+            MatOfRect faceDetections = new MatOfRect();
+            faceDetector.detectMultiScale(image, faceDetections);
+
+            for (Rect rect : faceDetections.toArray()) {
+                Core.rectangle(image, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(0, 0, 255), 3);
+            }
+            return image;
         }
     }
 }
