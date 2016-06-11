@@ -11,7 +11,6 @@
 
     <artifactId>mipr-munit</artifactId>
 
-
     <build>
         <finalName>munit</finalName>
         <plugins>
@@ -73,6 +72,11 @@
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.10</version>
+                <configuration>
+                    <forkMode>once</forkMode>
+                    <workingDirectory>target</workingDirectory>
+                    <argLine>-Djava.library.path=${basedir}/../lib/x64</argLine>
+                </configuration>
                 <executions>
                     <execution>
                         <id>default-test</id>

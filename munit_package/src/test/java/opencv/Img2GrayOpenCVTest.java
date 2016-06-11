@@ -20,7 +20,7 @@ public class Img2GrayOpenCVTest {
     public void TestMapper () throws Exception {
         Mapper<NullWritable, MatImageWritable, NullWritable, MatImageWritable> map = new Img2Gray_opencv.Img2Gray_opencvMapper();
         MiprOpenCVMapDriver driver = new MiprOpenCVMapDriver<NullWritable, MatImageWritable>(map){};
-        driver.withInputFile("..\\munit_package\\src\\test\\images\\color2.JPG");
+        driver.withInputFile("/color2.JPG");
         driver.test(new MiprAssert<NullWritable, MatImageWritable>() {
             @Override
             protected void assertResults(List<Pair<NullWritable, MatImageWritable>> runResults){

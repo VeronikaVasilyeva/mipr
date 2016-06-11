@@ -23,8 +23,4 @@ public abstract class OpenCv_TestBase{
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         Img2Gray_opencv.Img2Gray_opencvMapper.set_openCvLoaded();
     }
-
-    public static Mat LoadMat(String fileName){
-        return Highgui.imread(fileName);
-    }
 }

@@ -28,9 +28,6 @@ public abstract class MiprOpenCVMapDriver<KEYOUT, VALUEOUT> extends MiprMapDrive
     }
 
     protected MatImageWritable getWritable(String fileName) throws Exception {
-        File f = new File(fileName);
-        if(f.exists() && !f.isDirectory()) {
-            return new MatImageWritable(Highgui.imread(fileName));
-        } throw new Exception();
+        return MatImageWritable.FromResource(fileName);
     }
 }

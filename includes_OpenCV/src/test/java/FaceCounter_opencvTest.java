@@ -11,7 +11,6 @@ import org.junit.runners.JUnit4;
 import org.opencv.core.Core;
 import org.opencv.highgui.Highgui;
 
-import java.io.File;
 import java.io.IOException;
 
 @RunWith(JUnit4.class)
@@ -39,8 +38,8 @@ public class FaceCounter_opencvTest{
         //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\3.jpg")));
         //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\12.jpg")));
         //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\5.jpg")));
-        String path = getClass().getResource("10.jpg").getPath();
-        mapDriver.withInput(NullWritable.get(), MatImageWritable.FromResourceStream(getClass().getResourceAsStream("10.jpg")));
+
+        mapDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/10.jpg"));
         //mapDriver.withOutput(new IntWritable(0),  new IntWritable(1));
         //mapDriver.withOutput(new IntWritable(1),  new IntWritable(1));
         //mapDriver.withOutput(new IntWritable(3),  new IntWritable(1));
@@ -52,10 +51,10 @@ public class FaceCounter_opencvTest{
 
     @Test
     public void testMapperReducer() throws IOException {
-        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("color2.jpg")));
-        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("face2.jpg")));
-        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("face2.jpg")));
-        mapReduceDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread("10.jpg")));
+        mapReduceDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/color2.jpg"));
+        mapReduceDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/face2.jpg"));
+        mapReduceDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/face2.jpg"));
+        mapReduceDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/10.jpg"));
         mapReduceDriver.withOutput(new IntWritable(0),  new IntWritable(1));
         mapReduceDriver.withOutput(new IntWritable(1),  new IntWritable(2));
         mapReduceDriver.withOutput(new IntWritable(10),  new IntWritable(1));
