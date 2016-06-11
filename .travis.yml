@@ -33,6 +33,7 @@ install:
   
 before_script:
   - if [ ! -d opencv-2.4.9 ]; then sh build.sh; fi;
+  - cp ./opencv-2.4.9/build/lib/libopencv_java249.so ./lib/x64/
 
 cache:
   directories:

@@ -8,4 +8,3 @@ make -j8
 sudo make -j8 install
 mvn install:install-file -Dfile=/usr/local/share/OpenCV/java/opencv-249.jar -DgroupId=opencv -DartifactId=opencv -Dversion=2.4.9 -Dpackaging=jar
 cd ../..
-cp ./opencv-2.4.9/build/lib/libopencv_java249.so ./lib/x64/
