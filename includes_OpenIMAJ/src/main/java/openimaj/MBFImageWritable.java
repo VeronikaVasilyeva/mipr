@@ -35,6 +35,11 @@ public class MBFImageWritable extends ImageWritable<MBFImage> {
         this.im = mbfi;
     }
 
+    @Override
+    protected byte[] getImageAsBytes() {
+        return OpenIMAJUtilities.mbfImagePixelsToByteArray(im);
+    }
+
 
     public void write(DataOutput out) throws IOException {
         super.write(out);
@@ -51,7 +56,7 @@ public class MBFImageWritable extends ImageWritable<MBFImage> {
         out.writeInt(im.bands.size());
 
         // Write pixels
-        out.write(OpenIMAJUtilities.mbfImagePixelsToByteArray(im));
+        out.write(getImageAsBytes());
     }
     public void readFields(DataInput in) throws IOException {
         super.readFields(in);

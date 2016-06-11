@@ -35,8 +35,7 @@ public class OpenIMAJ_Tests {
         driver.test(new MiprSingleResultAssert<NullWritable,MBFImageWritable,MBFImageWritable>() {
             @Override
             protected void assertResult(MBFImageWritable source, MBFImageWritable resultValue) {
-                MiprAssert.assertSameNameAndFormat(source,resultValue);
-                MiprAssert.assertSamePerPixel(source,resultValue);
+                MiprAssert.assertSame(source,resultValue);
             }
         });
     }

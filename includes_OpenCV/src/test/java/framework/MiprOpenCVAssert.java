@@ -38,6 +38,6 @@ public class MiprOpenCVAssert extends MiprAssert {
     }
 
     public static void assertSamePerPixel(Mat expected, Mat actual){
-        assertTrue(MatImageWritable.AreSamePerPixel(expected,actual));
+        assertTrue("Images not same", MatImageWritable.areSamePerPixel(expected,actual));
     }
 }

@@ -22,5 +22,10 @@ public abstract class MiprAssert<KEY, VALUE, SOURCE_WRITABLE extends ImageWritab
     public static <WRITABLE extends ImageWritable> void assertSamePerPixel(WRITABLE expected, WRITABLE actual){
         assertTrue("Images not same", expected.equals(actual));
     }
+
+    public static <WRITABLE extends ImageWritable> void assertSame(WRITABLE expected, WRITABLE actual){
+        assertSameNameAndFormat(expected,actual);
+        assertSamePerPixel(expected,actual);
+    }
 }
 

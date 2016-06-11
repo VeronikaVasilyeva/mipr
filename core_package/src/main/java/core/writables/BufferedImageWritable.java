@@ -26,14 +26,7 @@ public class BufferedImageWritable extends ImageWritable<BufferedImage> {
     @Override
     public void write(DataOutput out) throws IOException {
         super.write(out);
-
-        // Write image
-        // Convert image to byte array
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(im, this.getFormat(), baos);
-        baos.flush();
-        byte[] bytes = baos.toByteArray();
-        baos.close();
+        byte[] bytes = getImageAsBytes();
         // Write byte array size
         out.writeInt(bytes.length);
         // Write image bytes
@@ -51,5 +44,22 @@ public class BufferedImageWritable extends ImageWritable<BufferedImage> {
         in.readFully(bArray);
         // Read image from byte array
         im = ImageIO.read(new ByteArrayInputStream(bArray));
+    }
+
+    @Override
+    protected byte[] getImageAsBytes() {
+        try {
+            // Write image
+            // Convert image to byte array
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(im, this.getFormat(), baos);
+            baos.flush();
+            byte[] bytes = baos.toByteArray();
+            baos.close();
+            return bytes;
+        }
+        catch (IOException ex){
+            return null;
+        }
     }
 }
