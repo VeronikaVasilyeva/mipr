@@ -1,14 +1,10 @@
-package framework;
-
+import framework.MiprMapDriver;
 import opencv.MatImageWritable;
 import opencv.OpenCVMapper;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
-import org.opencv.highgui.Highgui;
-
-import java.io.File;
 
 /**
  * Created by VeronikaV on 05.06.2016.

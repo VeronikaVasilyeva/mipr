@@ -1,20 +1,9 @@
-package framework;
 
+import framework.MiprMapDriver;
 import openimaj.MBFImageWritable;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.openimaj.image.ImageUtilities;
-import org.openimaj.image.MBFImage;
-import openimaj.MBFImageInputFormat;
-import openimaj.MBFImageOutputFormat;
-import openimaj.MBFImageWritable;
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.NullWritable;
-import org.apache.hadoop.mapreduce.Job;
-import org.apache.hadoop.mapreduce.Mapper;
-import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
-import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.openimaj.image.MBFImage;
 
 import java.io.File;

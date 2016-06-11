@@ -55,5 +55,11 @@
             <artifactId>mipr-core</artifactId>
             <version>0.1</version>
         </dependency>
+        <dependency>
+            <groupId>mipr</groupId>
+            <artifactId>mipr-munit</artifactId>
+            <version>0.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>

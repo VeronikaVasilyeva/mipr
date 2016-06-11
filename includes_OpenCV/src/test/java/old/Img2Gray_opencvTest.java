@@ -1,13 +1,12 @@
+package old;
+
 import experiments.Img2Gray_opencv;
 import opencv.MatImageWritable;
 import opencv.OpenCVMapper;
 import org.apache.hadoop.io.NullWritable;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 
-import java.io.File;
 import java.io.IOException;
 
 public class Img2Gray_opencvTest extends OpenCv_MapperTestBase<NullWritable, MatImageWritable,NullWritable,MatImageWritable>{

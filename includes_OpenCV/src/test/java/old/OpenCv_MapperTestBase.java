@@ -1,8 +1,7 @@
+package old;
+
 import opencv.OpenCVMapper;
-import org.apache.hadoop.mapred.Reducer;
-import org.apache.hadoop.mrunit.ReduceDriver;
 import org.apache.hadoop.mrunit.mapreduce.MapDriver;
-import org.junit.Test;
 
 import java.io.IOException;
 

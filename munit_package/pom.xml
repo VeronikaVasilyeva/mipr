@@ -120,31 +120,9 @@
             <classifier>hadoop2</classifier>
         </dependency>
         <dependency>
-            <groupId>nu.pattern</groupId>
-            <artifactId>opencv</artifactId>
-            <version>2.4.9-7</version>
-        </dependency>
-        <dependency>
             <groupId>mipr</groupId>
             <artifactId>mipr-core</artifactId>
             <version>0.1</version>
         </dependency>
-        <dependency>
-            <groupId>mipr</groupId>
-            <artifactId>mipr-opencv</artifactId>
-            <version>0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>mipr</groupId>
-            <artifactId>mipr-openimaj</artifactId>
-            <version>0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>mipr</groupId>
-            <artifactId>mipr-openimaj</artifactId>
-            <version>0.1</version>
-        </dependency>
     </dependencies>
-
-
 </project>

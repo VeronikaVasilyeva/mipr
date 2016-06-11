@@ -1,3 +1,5 @@
+package old;
+
 import org.apache.hadoop.mapred.Reducer;
 import org.apache.hadoop.mrunit.ReduceDriver;
 import org.junit.Test;

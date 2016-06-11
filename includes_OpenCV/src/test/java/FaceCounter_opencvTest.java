@@ -9,12 +9,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.opencv.core.Core;
-import org.opencv.highgui.Highgui;
 
 import java.io.IOException;
 
 @RunWith(JUnit4.class)
-public class FaceCounter_opencvTest{
+public class FaceCounter_opencvTest {
     MapDriver<NullWritable, MatImageWritable, IntWritable, IntWritable> mapDriver;
     MapReduceDriver<NullWritable, MatImageWritable, IntWritable, IntWritable, IntWritable, IntWritable> mapReduceDriver;
 
@@ -31,14 +30,13 @@ public class FaceCounter_opencvTest{
         FaceCounter_opencv.FaceCounterMapper.set_openCvLoaded();
     }
 
-    //@Test
+    @Test
     public void testMapper() throws IOException {
         //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\color2.jpg")));
         //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\face2.jpg")));
         //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\3.jpg")));
         //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\12.jpg")));
         //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\5.jpg")));
-
         mapDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/10.jpg"));
         //mapDriver.withOutput(new IntWritable(0),  new IntWritable(1));
         //mapDriver.withOutput(new IntWritable(1),  new IntWritable(1));
@@ -49,7 +47,7 @@ public class FaceCounter_opencvTest{
         mapDriver.runTest();
     }
 
-    //@Test
+    @Test
     public void testMapperReducer() throws IOException {
         mapReduceDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/color2.jpg"));
         mapReduceDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/face2.jpg"));

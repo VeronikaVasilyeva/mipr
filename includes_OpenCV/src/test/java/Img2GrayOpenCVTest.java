@@ -1,8 +1,6 @@
-package opencv;
-
 import experiments.Img2Gray_opencv;
 import framework.MiprAssert;
-import framework.MiprOpenCVMapDriver;
+import opencv.MatImageWritable;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mrunit.types.Pair;

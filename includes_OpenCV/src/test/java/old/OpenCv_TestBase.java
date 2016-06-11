@@ -1,3 +1,5 @@
+package old;
+
 import experiments.Img2Gray_opencv;
 import org.junit.Before;
 import org.opencv.core.Core;
