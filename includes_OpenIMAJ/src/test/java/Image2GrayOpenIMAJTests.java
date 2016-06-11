@@ -15,7 +15,7 @@ import org.openimaj.image.MBFImage;
 import java.io.InputStream;
 
 @RunWith(Theories.class)
-public class OpenIMAJ_Tests {
+public class Image2GrayOpenIMAJTests {
     @DataPoints
     public static String[] testFileNames = new String[]{ "/color.jpg", "/10.jpg", "/face2.jpg"};
 
