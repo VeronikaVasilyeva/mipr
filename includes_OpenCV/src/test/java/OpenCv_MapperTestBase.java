@@ -17,7 +17,7 @@ public abstract class OpenCv_MapperTestBase<KEYIN, VALUEIN, KEYOUT, VALUEOUT> ex
 
     protected abstract OpenCVMapper<KEYIN, VALUEIN, KEYOUT, VALUEOUT> createMapper();
 
-    @Test
+    //@Test
     public abstract void testMapper() throws IOException;
 }
 
