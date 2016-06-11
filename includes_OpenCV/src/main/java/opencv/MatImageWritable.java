@@ -2,10 +2,10 @@ package opencv;
 
 import core.writables.ImageWritable;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
+import org.opencv.highgui.Highgui;
 
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
 
 /**
@@ -97,5 +97,32 @@ public class MatImageWritable extends ImageWritable<Mat> {
         byte[] result = new byte[(int) (image.total() * image.channels())];
         image.get(0, 0, result);
         return result;
+    }
+
+    public static MatImageWritable FromResource(String resourceName) throws IOException {
+        InputStream stream = MatImageWritable.class.getResourceAsStream(resourceName);
+        return FromResourceStream(stream);
+    }
+
+    public static MatImageWritable FromResourceStream(InputStream stream) throws IOException {
+        byte[] temporaryImageInMemory = readStream(stream);
+        Mat outputImage = Highgui.imdecode(new MatOfByte(temporaryImageInMemory), Highgui.IMREAD_UNCHANGED);
+        return new MatImageWritable(outputImage);
+    }
+
+    private static byte[] readStream(InputStream stream) throws IOException {
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        int nRead;
+        byte[] data = new byte[16384];
+
+        while ((nRead = stream.read(data, 0, data.length)) != -1) {
+            buffer.write(data, 0, nRead);
+        }
+
+        buffer.flush();
+        byte[] temporaryImageInMemory = buffer.toByteArray();
+        buffer.close();
+        stream.close();
+        return temporaryImageInMemory;
     }
 }

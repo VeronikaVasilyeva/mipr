@@ -40,7 +40,7 @@ public class FaceCounter_opencvTest{
         //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\12.jpg")));
         //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\5.jpg")));
         String path = getClass().getResource("10.jpg").getPath();
-        mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(path)));
+        mapDriver.withInput(NullWritable.get(), MatImageWritable.FromResourceStream(getClass().getResourceAsStream("10.jpg")));
         //mapDriver.withOutput(new IntWritable(0),  new IntWritable(1));
         //mapDriver.withOutput(new IntWritable(1),  new IntWritable(1));
         //mapDriver.withOutput(new IntWritable(3),  new IntWritable(1));
