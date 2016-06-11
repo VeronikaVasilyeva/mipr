@@ -22,7 +22,7 @@ public class Image2GrayOpenIMAJTests {
     @Theory
     public void TestMapper(String fileName) throws Exception {
         System.out.println("Test for image: "+fileName);
-        Mapper<NullWritable, MBFImageWritable, NullWritable, MBFImageWritable> map = new Img2Gray_OpenIMAJ.Img2GrayOimgMapper();
+        Mapper<NullWritable, MBFImageWritable, NullWritable, MBFImageWritable> map = new Img2Gray_OpenIMAJ.Img2Gray_Mapper();
         MiprMapDriver driver = new MiprMapDriver<MBFImage, MBFImageWritable, NullWritable, MBFImageWritable>(map) {
             @Override
             protected MBFImageWritable getWritable(String fileName) throws Exception {

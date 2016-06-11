@@ -26,7 +26,7 @@ public class Img2Gray_OpenIMAJ {
         Configuration conf = new Configuration();
         Job job = new Job(conf);
         job.setJarByClass(Img2Gray_OpenIMAJ.class);
-        job.setMapperClass(Img2GrayOimgMapper.class);
+        job.setMapperClass(Img2Gray_Mapper.class);
         job.setNumReduceTasks(0);
         job.setInputFormatClass(MBFImageInputFormat.class);
         job.setOutputFormatClass(MBFImageOutputFormat.class);
@@ -40,7 +40,7 @@ public class Img2Gray_OpenIMAJ {
         job.waitForCompletion(true);
     }
 
-    public static class Img2GrayOimgMapper extends Mapper<NullWritable, MBFImageWritable, NullWritable, MBFImageWritable> {
+    public static class Img2Gray_Mapper extends Mapper<NullWritable, MBFImageWritable, NullWritable, MBFImageWritable> {
 
         @Override
         protected void map(NullWritable key, MBFImageWritable value, Context context) throws IOException, InterruptedException {
