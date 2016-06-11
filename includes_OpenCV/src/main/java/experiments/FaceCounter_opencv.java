@@ -47,7 +47,7 @@ public class FaceCounter_opencv {
             Mat image = value.getImage();
             String p = new File(getClass().getResource("/lbpcascade_frontalface.xml").getPath()).toString();
             System.out.println(p);
-            CascadeClassifier faceDetector = new CascadeClassifier(p);
+            CascadeClassifier faceDetector = new CascadeClassifier("lbpcascade_frontalface.xml");
             MatOfRect faceDetections = new MatOfRect();
             faceDetector.detectMultiScale(image, faceDetections);
 
