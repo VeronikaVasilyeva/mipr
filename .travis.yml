@@ -10,10 +10,12 @@ deploy:
   file: 
     - "core_package/target/mipr-core-0.1.jar"
     - "includes_OpenCV/target/opencv.jar"
-    - "includes_OpenIMAJ/target/openimaj.jar" 
+    - "includes_OpenIMAJ/target/openimaj.jar"
+    - "munit_package/target/munit.jar"
     - "core_package/target/mipr-core-0.1-jar-with-dependencies.jar"
     - "includes_OpenCV/target/opencv-jar-with-dependencies.jar"
-    - "includes_OpenIMAJ/target/openimaj-jar-with-dependencies.jar" 
+    - "includes_OpenIMAJ/target/openimaj-jar-with-dependencies.jar"
+    - "munit_package/target/munit-jar-with-dependencies.jar"
   skip_cleanup: true
   on: 
     repo: VeronikaVasilyeva/mipr
