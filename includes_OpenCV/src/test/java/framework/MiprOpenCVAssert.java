@@ -8,7 +8,7 @@ import org.opencv.core.Mat;
  * Created by VeronikaV on 05.06.2016.
  */
 
-public class MiprOpenCVAssert extends Assert {
+public class MiprOpenCVAssert extends MiprAssert {
     public static void assertSameSize(MatImageWritable expected, MatImageWritable actual){
         Mat expectedImage = expected.getImage();
         Mat actualImage = actual.getImage();
@@ -19,11 +19,6 @@ public class MiprOpenCVAssert extends Assert {
         assertEquals(expectedImage.width(),actualImage.width());
         assertEquals(expectedImage.height(),actualImage.height());
         assertEquals(expectedImage.total(),actualImage.total());
-    }
-
-    public static void assertSameNameAndFormat(MatImageWritable expected, MatImageWritable actual){
-        assertEquals(expected.getFormat(),actual.getFormat());
-        assertEquals(expected.getFileName(),actual.getFileName());
     }
 
     public static void assertType(int type, MatImageWritable actual){
@@ -43,6 +38,6 @@ public class MiprOpenCVAssert extends Assert {
     }
 
     public static void assertSamePerPixel(Mat expected, Mat actual){
-        assertTrue("Images not same",MatImageWritable.AreSamePerPixel(expected,actual));
+        assertTrue(MatImageWritable.AreSamePerPixel(expected,actual));
     }
 }

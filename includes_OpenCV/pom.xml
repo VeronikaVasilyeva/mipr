@@ -127,11 +127,6 @@
             <version>2.4.9-7</version>
         </dependency>
         <dependency>
-            <groupId>org.openimaj</groupId>
-            <artifactId>image-processing</artifactId>
-            <version>1.3.1</version>
-        </dependency>
-        <dependency>
             <groupId>mipr</groupId>
             <artifactId>mipr-core</artifactId>
             <version>0.1</version>

@@ -14,13 +14,11 @@ import java.io.IOException;
 
 @RunWith(JUnit4.class)
 public class FaceCounter_opencvTest {
-    MapDriver<NullWritable, MatImageWritable, IntWritable, IntWritable> mapDriver;
     MapReduceDriver<NullWritable, MatImageWritable, IntWritable, IntWritable, IntWritable, IntWritable> mapReduceDriver;
 
     @Before
     public void setUp() throws IOException {
         FaceCounter_opencv.FaceCounterMapper mapper = new FaceCounter_opencv.FaceCounterMapper();
-        mapDriver = MapDriver.newMapDriver(mapper);
         mapReduceDriver = MapReduceDriver.newMapReduceDriver();
         mapReduceDriver.setMapper(mapper);
         mapReduceDriver.setReducer(new FaceCounter_opencv.FaceCounterReducer());
@@ -31,24 +29,8 @@ public class FaceCounter_opencvTest {
     }
 
     @Test
-    public void testMapper() throws IOException {
-        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\color.jpg")));
-        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\face2.jpg")));
-        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\3.jpg")));
-        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\12.jpg")));
-        //mapDriver.withInput(NullWritable.get(), new MatImageWritable(Highgui.imread(".\\src\\test\\java\\images\\5.jpg")));
-        mapDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/10.jpg"));
-        //mapDriver.withOutput(new IntWritable(0),  new IntWritable(1));
-        //mapDriver.withOutput(new IntWritable(1),  new IntWritable(1));
-        //mapDriver.withOutput(new IntWritable(3),  new IntWritable(1));
-        //mapDriver.withOutput(new IntWritable(12),  new IntWritable(1));
-        //mapDriver.withOutput(new IntWritable(5),  new IntWritable(1));
-        mapDriver.withOutput(new IntWritable(10),  new IntWritable(1));
-        mapDriver.runTest();
-    }
-
-    @Test
     public void testMapperReducer() throws IOException {
+        //TODO: rewrite using munit
         mapReduceDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/color.jpg"));
         mapReduceDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/face2.jpg"));
         mapReduceDriver.withInput(NullWritable.get(), MatImageWritable.FromResource("/face2.jpg"));

@@ -1,11 +1,13 @@
 package framework;
 
+import core.writables.ImageWritable;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.mrunit.types.Pair;
 
 import java.util.List;
 
-public abstract class MiprSingleResultAssert<KEY, VALUE, SOURCE_WRITABLE> extends MiprAssert<KEY, VALUE, SOURCE_WRITABLE>{
+public abstract class MiprSingleResultAssert<KEY, VALUE, SOURCE_WRITABLE extends ImageWritable>
+        extends MiprAssert<KEY, VALUE, SOURCE_WRITABLE>{
     private SOURCE_WRITABLE source;
 
     @Override
