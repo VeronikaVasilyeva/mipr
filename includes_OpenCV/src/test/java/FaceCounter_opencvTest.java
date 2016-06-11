@@ -24,7 +24,7 @@ public class FaceCounter_opencvTest {
         mapReduceDriver = MapReduceDriver.newMapReduceDriver();
         mapReduceDriver.setMapper(mapper);
         mapReduceDriver.setReducer(new FaceCounter_opencv.FaceCounterReducer());
-        
+
         //load opencv and let mapper know this
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         FaceCounter_opencv.FaceCounterMapper.set_openCvLoaded();

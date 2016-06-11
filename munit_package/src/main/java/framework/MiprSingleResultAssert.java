@@ -1,5 +1,6 @@
 package framework;
 
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.mrunit.types.Pair;
 
 import java.util.List;
@@ -15,8 +16,11 @@ public abstract class MiprSingleResultAssert<KEY, VALUE, SOURCE_WRITABLE> extend
 
     @Override
     protected final void assertResult(Pair<KEY, VALUE> runResult) {
-        assertResult(source, runResult.getSecond());
+        assertResult(source, runResult.getFirst(), runResult.getSecond());
     }
 
-    protected abstract void assertResult(SOURCE_WRITABLE source, VALUE result);
+    protected void assertResult(SOURCE_WRITABLE source, KEY resultKey, VALUE resultValue){
+        assertResult(source,resultValue);
+    }
+    protected void assertResult(SOURCE_WRITABLE source, VALUE resultValue){};
 }

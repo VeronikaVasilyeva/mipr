@@ -48,8 +48,6 @@ public class FaceCounter_opencv {
             //and must use temp files
             File temp = File.createTempFile("tempfile", ".tmp");
             temp.delete();
-            System.out.println(temp.toPath());
-            System.out.println(temp.toString());
             Files.copy(getClass().getResourceAsStream("/lbpcascade_frontalface.xml"),temp.toPath());
             CascadeClassifier faceDetector = new CascadeClassifier(temp.toString());
             MatOfRect faceDetections = new MatOfRect();
