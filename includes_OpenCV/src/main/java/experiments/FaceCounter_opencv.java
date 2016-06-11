@@ -16,8 +16,7 @@ import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
 import org.opencv.objdetect.CascadeClassifier;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 
 public class FaceCounter_opencv {
@@ -45,9 +44,14 @@ public class FaceCounter_opencv {
         @Override
         protected void map(NullWritable key, MatImageWritable value, Context context) throws IOException, InterruptedException {
             Mat image = value.getImage();
-            String p = new File(getClass().getResource("/lbpcascade_frontalface.xml").getPath()).toString();
-            System.out.println(p);
-            CascadeClassifier faceDetector = new CascadeClassifier(p);
+            //opencv internally calls native methods, so we cant use resources
+            //and must use temp files
+            File temp = File.createTempFile("tempfile", ".tmp");
+            temp.delete();
+            System.out.println(temp.toPath());
+            System.out.println(temp.toString());
+            Files.copy(getClass().getResourceAsStream("/lbpcascade_frontalface.xml"),temp.toPath());
+            CascadeClassifier faceDetector = new CascadeClassifier(temp.toString());
             MatOfRect faceDetections = new MatOfRect();
             faceDetector.detectMultiScale(image, faceDetections);
 
