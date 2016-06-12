@@ -3,7 +3,9 @@ import framework.MiprAssert;
 import framework.MiprMapDriver;
 import framework.MiprSingleResultAssert;
 import openimaj.MBFImageWritable;
+import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.io.WritableUtils;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
@@ -15,7 +17,7 @@ import org.openimaj.image.MBFImage;
 import java.io.InputStream;
 
 @RunWith(Theories.class)
-public class Image2GrayOpenIMAJTests {
+public class Image2GrayOpenIMAJTest {
     @DataPoints
     public static String[] testFileNames = new String[]{ "/color.jpg", "/10.jpg", "/face2.jpg"};
 
@@ -35,7 +37,9 @@ public class Image2GrayOpenIMAJTests {
         driver.test(new MiprSingleResultAssert<NullWritable,MBFImageWritable,MBFImageWritable>() {
             @Override
             protected void assertResult(MBFImageWritable source, MBFImageWritable resultValue) {
-                MiprAssert.assertSame(source,resultValue);
+                MBFImageWritable expected = WritableUtils.clone(source,new Configuration());
+                expected.setImage(MBFImage.createRGB(expected.getImage().getBand(0)));
+                MiprAssert.assertSame(expected,resultValue);
             }
         });
     }

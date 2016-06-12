@@ -12,7 +12,7 @@ import java.util.List;
 public abstract class MiprAssert<KEY, VALUE, SOURCE_WRITABLE extends ImageWritable> extends Assert{
 
     protected void assertResults(List<Pair<KEY, VALUE>> runResults, List<SOURCE_WRITABLE> originalWritables){}
-    protected void assertResult(Pair<KEY, VALUE> runResult){}
+    protected void assertResult(Pair<KEY, VALUE> runResult) throws Exception {}
 
     public static <WRITABLE extends ImageWritable> void assertSameNameAndFormat(WRITABLE expected, WRITABLE actual){
         assertEquals(expected.getFormat(),actual.getFormat());

@@ -46,7 +46,7 @@ public abstract class MiprMapDriver<IMAGE, WRITABLE extends ImageWritable<IMAGE>
     //вернет объект типа Writable - возвращает конкретную реализацию из наследника - фабричный метод
     protected abstract WRITABLE getWritable(String fileName) throws Exception;
 
-    public final void test(MiprAssert<KEYOUT, VALUEOUT, WRITABLE> miprAssert) throws IOException {
+    public final void test(MiprAssert<KEYOUT, VALUEOUT, WRITABLE> miprAssert) throws Exception {
         //предоставляет возможность преднастройки
         perTestSetup();
         try{

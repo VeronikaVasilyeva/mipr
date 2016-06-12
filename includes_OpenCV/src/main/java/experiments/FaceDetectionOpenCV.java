@@ -56,6 +56,7 @@ public class FaceDetectionOpenCV {
 
         public Mat detectFaces(Mat image) {
             image = image.clone();
+
             CascadeClassifier faceDetector = new CascadeClassifier("lbpcascade_frontalface.xml");
             MatOfRect faceDetections = new MatOfRect();
             faceDetector.detectMultiScale(image, faceDetections);

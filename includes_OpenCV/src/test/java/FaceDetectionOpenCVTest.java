@@ -11,6 +11,8 @@ import org.junit.runner.RunWith;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 
+import java.io.IOException;
+
 @RunWith(Theories.class)
 public class FaceDetectionOpenCVTest {
     @DataPoints
@@ -25,7 +27,7 @@ public class FaceDetectionOpenCVTest {
 
         driver.test(new MiprOpenCVSingleResultAssert<MatImageWritable, MatImageWritable>() {
             @Override
-            protected void assertResult(MatImageWritable source, MatImageWritable resultValue) {
+            protected void assertResult(MatImageWritable source, MatImageWritable resultValue) throws IOException {
                 Mat sourceImage = source.getImage();
                 Mat expectedOutput = map.detectFaces(sourceImage);
                 MiprOpenCVAssert.assertSamePerPixel(expectedOutput, resultValue.getImage());

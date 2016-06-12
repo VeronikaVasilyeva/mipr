@@ -13,6 +13,7 @@
         <module>includes_OpenIMAJ</module>
         <module>core_package</module>
         <module>munit_package</module>
+        <module>miniDfsExp</module>
     </modules>
     
 <dependencies>

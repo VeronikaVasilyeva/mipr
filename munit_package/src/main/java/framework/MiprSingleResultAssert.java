@@ -4,6 +4,7 @@ import core.writables.ImageWritable;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.mrunit.types.Pair;
 
+import java.io.IOException;
 import java.util.List;
 
 public abstract class MiprSingleResultAssert<KEY, VALUE, SOURCE_WRITABLE extends ImageWritable>
@@ -17,12 +18,12 @@ public abstract class MiprSingleResultAssert<KEY, VALUE, SOURCE_WRITABLE extends
     }
 
     @Override
-    protected final void assertResult(Pair<KEY, VALUE> runResult) {
+    protected final void assertResult(Pair<KEY, VALUE> runResult)  throws Exception{
         assertResult(source, runResult.getFirst(), runResult.getSecond());
     }
 
-    protected void assertResult(SOURCE_WRITABLE source, KEY resultKey, VALUE resultValue){
+    protected void assertResult(SOURCE_WRITABLE source, KEY resultKey, VALUE resultValue) throws Exception{
         assertResult(source,resultValue);
     }
-    protected void assertResult(SOURCE_WRITABLE source, VALUE resultValue){};
+    protected void assertResult(SOURCE_WRITABLE source, VALUE resultValue) throws IOException {};
 }

@@ -40,9 +40,35 @@ public class MiprConfigurationParser {
         }
     }
 
+    public MiprConfigurationParser( Configuration cfg) {
+        conf = cfg;
+
+        JSONParser jparser = new JSONParser();
+        JSONObject settings = null;
+        try {
+            settings = (JSONObject) jparser.parse(new FileReader(getClass().getClassLoader().getResource("main.json").getFile()));
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            JSONObject miprconf = (JSONObject) settings.get("mipr-conf");
+            opencvpath = (String) miprconf.get("opencvpath");
+            maxsplitsize = (long) miprconf.get("maxsplitsize");
+
+            JSONObject javaconf = (JSONObject) settings.get("java-conf");
+            for (Object o : javaconf.keySet()) {
+                String key = (String) o;
+                conf.set(key, (String) javaconf.get(o));
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Error occured while parsing configuration file. Check your core_package/src/configuration/main.json file.");
+        }
+    }
+
     private String opencvpath = "";
     private long maxsplitsize = 134217728;
-    private Configuration conf;
+    public Configuration conf;
 
     public URI getOpenCVUri(){
         return new Path(opencvpath).toUri();

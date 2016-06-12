@@ -12,6 +12,10 @@
     <artifactId>mipr-core</artifactId>
     <version>0.1</version>
 
+    <properties>
+        <hadoop.version>2.7.1</hadoop.version>
+    </properties>
+
     <build>
         <resources>
             <resource>
@@ -43,27 +47,22 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>central</id>
-            <url>http://repo1.maven.org/maven2/</url>
-        </repository>
-        <repository>
-            <id>cloudera</id>
-            <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
-        </repository>
-    </repositories>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-client</artifactId>
-            <version>2.0.0-cdh4.6.0</version>
+            <artifactId>hadoop-common</artifactId>
+            <version>${hadoop.version}</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
             <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-mapreduce-client-core</artifactId>
+            <version>${hadoop.version}</version>
         </dependency>
     </dependencies>
 

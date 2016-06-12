@@ -6,7 +6,7 @@ import org.openimaj.image.MBFImage;
 
 import java.io.InputStream;
 
-public class MBFImageWritableTests extends ImageWritableTests<MBFImage, MBFImageWritable> {
+public class MBFImageWritableTest extends ImageWritableTests<MBFImage, MBFImageWritable> {
 
     @Override
     protected MBFImageWritable getWritable() throws Exception {

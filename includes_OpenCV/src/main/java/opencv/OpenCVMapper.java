@@ -4,7 +4,10 @@ import org.apache.hadoop.filecache.DistributedCache;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.mapreduce.Mapper;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 
 /**
  * Created by Epanchee on 13.08.2015.
@@ -19,8 +22,12 @@ public class OpenCVMapper<KEYIN, VALUEIN, KEYOUT, VALUEOUT> extends Mapper<KEYIN
     protected void setup(Context context) throws IOException, InterruptedException {
         if(!openCvLoaded)
         {
-            Path[] myCacheFiles = DistributedCache.getLocalCacheFiles(context.getConfiguration());
-            System.load(myCacheFiles[0].toUri().getPath());
+            Path[] myCacheFiles = context.getLocalCacheFiles();
+            File file = File.createTempFile("native", ".lib");
+            file.deleteOnExit();
+            file.delete();
+            Files.copy(new FileInputStream(myCacheFiles[0].toUri().getPath()),file.toPath());
+            System.load(file.getPath());
             set_openCvLoaded();
         }
     }
