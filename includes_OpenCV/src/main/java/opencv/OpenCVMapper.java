@@ -22,12 +22,8 @@ public class OpenCVMapper<KEYIN, VALUEIN, KEYOUT, VALUEOUT> extends Mapper<KEYIN
     protected void setup(Context context) throws IOException, InterruptedException {
         if(!openCvLoaded)
         {
-            Path[] myCacheFiles = context.getLocalCacheFiles();
-            File file = File.createTempFile("native", ".lib");
-            file.deleteOnExit();
-            file.delete();
-            Files.copy(new FileInputStream(myCacheFiles[0].toUri().getPath()),file.toPath());
-            System.load(file.getPath());
+            Path[] myCacheFiles = DistributedCache.getLocalCacheFiles(context.getConfiguration());
+            System.load(myCacheFiles[0].toUri().getPath());
             set_openCvLoaded();
         }
     }
