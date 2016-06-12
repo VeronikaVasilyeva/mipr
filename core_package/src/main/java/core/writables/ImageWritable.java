@@ -57,7 +57,7 @@ public abstract class ImageWritable<I> implements Writable {
 
     @Override
     public boolean equals(Object obj) {
-        if(!(obj.getClass()!=getClass())) {
+        if((obj.getClass()!=getClass())) {
             return false;
         } else {
             ImageWritable<I> other = (ImageWritable<I>)obj;
